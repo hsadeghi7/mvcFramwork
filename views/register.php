@@ -5,8 +5,10 @@
 use app\core\form\Form;
 use app\models\RegisterModel;
 // $model = new RegisterModel;
- $form = Form::begin('', "post");
-    ?>
+ $form = Form::begin('', "post"); 
+
+ ?>
+
     <div class="col">
         <?php echo $form->field($model, 'firstName') ?>
     </div>
@@ -16,6 +18,10 @@ use app\models\RegisterModel;
     <?php echo $form->field($model, 'email') ?>
     <?php echo $form->field($model, 'password')->passwordField() ?>
     <?php echo $form->field($model, 'confirmPassword')->passwordField() ?>
+
     <input type="submit" class="btn btn-primary" name="Submit">
+
     <?php Form::end() ?>
+
+
 </div>

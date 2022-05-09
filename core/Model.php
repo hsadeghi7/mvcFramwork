@@ -20,7 +20,6 @@ abstract class Model
             }
         }
     }
-
     abstract public function rules(): array;
 
     public function validation()
@@ -35,7 +34,7 @@ abstract class Model
                 if ($ruleName === self::RULE_REQUIRED && !$value) {
                     $this->addError($attribute, self::RULE_REQUIRED);
                 }
-                if ($ruleName === self::RULE_EMAIL && filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     $this->addError($attribute, self::RULE_EMAIL);
                 }
                 if ($ruleName === self::RULE_MIN && strlen($value) < $rule['min']) {
@@ -64,7 +63,7 @@ abstract class Model
     public function errorMessages()
     {
         return [
-            self::RULE_REQUIRED => 'This faild is required ',
+            self::RULE_REQUIRED => 'This faild is required',
             self::RULE_EMAIL => 'This field must be valid email address',
             self::RULE_MIN => 'Min length of this field must be {min}',
             self::RULE_MAX => 'Max length of this field must be {max}',
