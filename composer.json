@@ -1,0 +1,10 @@
+{
+    "name": "hassan/phpmvc-framework",
+
+    "autoload":{
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
