@@ -52,7 +52,7 @@ abstract class Model
                     $className = $rule['class'];
                     $uniqueAttr = $rule['attribute'] ?? $attribute;
                     $tableName = $className::tableName();
-                    $statment = Application::$app->db->prepare("SELECT *FROM $tableName WHERE $uniqueAttr = :$uniqueAttr");
+                    $statment = Application::$app->db->pdo->prepare("SELECT *FROM $tableName WHERE $uniqueAttr = :$uniqueAttr");
                     $statment->bindValue(":$uniqueAttr", $value); //3:29:47
 
                     $statment->execute();
