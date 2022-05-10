@@ -3,10 +3,8 @@
     <?php
 
     use app\core\form\Form;
-    use app\models\RegisterModel;
-    // $model = new RegisterModel;
-    $form = Form::begin('', "post");
 
+    $form = Form::begin('', "post");
     ?>
     <div class="d-flex">
         <div class="col">

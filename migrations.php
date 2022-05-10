@@ -4,8 +4,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-use app\controllers\AuthController;
-use app\controllers\SiteController;
 use app\core\Application;
 
 $config = [
@@ -16,12 +14,7 @@ $config = [
     ]
 ];
 
-
-
-
 $app = new Application(__DIR__, $config);
-
-
 
 $app->db->applyMigrations();
 

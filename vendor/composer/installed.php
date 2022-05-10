@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a61843798ed2f461fcaedf2762e36f6b207b5119',
+        'reference' => '497b6564d4829834ae00f54498f49fbfe0705b85',
         'name' => 'hassan/phpmvc-framework',
         'dev' => true,
     ),
@@ -25,7 +25,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a61843798ed2f461fcaedf2762e36f6b207b5119',
+            'reference' => '497b6564d4829834ae00f54498f49fbfe0705b85',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(

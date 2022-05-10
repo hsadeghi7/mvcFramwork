@@ -8,8 +8,6 @@ class Database
 
     public function __construct(array $config)
     {
-        // var_dump($config);
-        // exit;
         $dsn = $config['dsn'] ?? '';
         $user = $config['user'] ?? '';
         $password = $config['password'] ?? '';
@@ -48,7 +46,7 @@ class Database
 
     public function createMigrationTable()
     {
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations id INT AUTO_INCREMENT PRIMARY KEY,
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (id INT AUTO_INCREMENT PRIMARY KEY,
         migration VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=INNODB;");
     }

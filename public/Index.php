@@ -16,14 +16,8 @@ $config = [
     ]
 ];
 
-// $pdo = new \PDO('mysql:host=localhost;dbname=mvc_framework', 'root', '');
-var_dump($config);
-exit;
-
-
 
 $app = new Application(dirname(__DIR__), $config);
-
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->post('/contact', [SiteController::class, 'handleContact']);
