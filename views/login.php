@@ -2,6 +2,12 @@
 
 use app\core\form\Form; ?>
 
+
+<?php 
+/** @var $this \app\core\View */
+$this->title = 'Login';
+?>
+
 <div class="container mt-3">
     <h1>Login</h1>
     <?php

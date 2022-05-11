@@ -1,3 +1,8 @@
+<?php 
+/** @var $this \app\core\View */
+$this->title = 'Register';
+?> 
+
 <div class="container mt-5">
     <h1>Register</h1>
     <?php
@@ -6,7 +11,7 @@
 
     $form = Form::begin('', "post");
     ?>
-    <div class="d-flex row gx-5  mt-2 ">
+    <div class="d-flex row gx-5 mt-2 ">
         <div class="col">
             <?php echo $form->field($model, 'firstName') ?>
         </div>

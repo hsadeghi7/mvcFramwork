@@ -1,4 +1,10 @@
-<h1>Contact us</h1>
+
+<?php 
+/** @var $this \app\core\View */
+$this->title = 'Contact';
+?>
+
+<h1>Contact</h1>
 
 <div class="container">
     <div class="container mb-3">

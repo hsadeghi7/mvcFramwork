@@ -6,13 +6,15 @@ namespace app\core;
 class Application
 {
     public static string $ROOT_DIR;
+    public string $layout = 'main';
+    public View $view;
     public string $userClass;
     public Router $router;
     public Request $request;
     public Response $response;
     public Database $db;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Session $session;
     public ?DbModel $user;
     public function __construct($rootPath, array $config)
@@ -26,6 +28,7 @@ class Application
         $this->controller = new Controller;
         $this->session = new Session;
         $this->db = new Database($config['db']);
+        $this->view = new View;
 
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
@@ -47,8 +50,15 @@ class Application
         $this->controller = $controller;
     }
     public function run()
-    {
+    {   try{
+
         echo $this->router->resolve();
+    }catch(\Exception $e){
+        $this->response->setStutusCode($e->getCode());
+        echo $this->view->renderView('_error', [
+            'exception' => $e
+        ]);
+    }
     }
 
     public function login(DbModel $user)
