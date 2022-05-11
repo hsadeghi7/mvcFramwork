@@ -6,7 +6,7 @@
 
     $form = Form::begin('', "post");
     ?>
-    <div class="d-flex">
+    <div class="d-flex row gx-5  mt-2 ">
         <div class="col">
             <?php echo $form->field($model, 'firstName') ?>
         </div>

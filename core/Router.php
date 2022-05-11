@@ -39,7 +39,7 @@ class Router
             Application::$app->controller = new $callback[0]();
             $callback[0] = Application::$app->controller;
         }
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $this->response);
          // ریکویست به عنوان آرگومان برای متد فراخوانی شده در آبجکت کالبک کاربرد دارد
     }
 
@@ -67,8 +67,6 @@ class Router
         foreach ($params as $key => $value) {
             $$key = $value;
         };
-        // var_dump($model);
-
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

@@ -1,4 +1,10 @@
+<?php
 
+use App\core\Application;
+// var_dump(Application::$app->user);
+// exit;
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -31,17 +37,35 @@
             <a class="nav-link" href="/contact">Contant</a>
           </li>
         </ul>
+
+        <?php if(Application::isGuest()): ?>
         <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/register">Register</a>
+            <a class="nav-link active" href="/register">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
         </ul>
+        <?php else: ?>
+        <ul class="navbar-nav mb-2 mb-lg-0 ml-auto">
+            <li class="nav-item">
+              <div class="d-flex">
+            <h6 class="mt-2"> Welcome <?php echo Application::$app->user->getDisplayName(); ?> </h6>
+            <a class="nav-link active"  href="/logout">(logout) </a>
+              </div>
+            </li>
+        </ul>
+        <?php endif;?>
       </div>
     </div>
   </nav>
+  <?php
+ if(Application::$app->session->getFlash('success')){ ?>
+  <div class="alert alert-success">
+  <?php echo Application::$app->session->getFlash('success') ?>
+  </div>
+  <?php };?>
   {{content}}
   
 </div>

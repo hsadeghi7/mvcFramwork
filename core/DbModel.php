@@ -2,11 +2,14 @@
 
 namespace app\core;
 
+
 abstract class DbModel extends Model
 {
 
     abstract public function tableName(): string;
     abstract public function attributes(): array;
+
+    abstract public static function primaryKey(): string; // خودم استاتیکش کردم 4:20:34
 
     public function save()
     {
@@ -25,6 +28,18 @@ abstract class DbModel extends Model
         return true;
     }
 
+
+    public static function findOne($where){
+        $tableName = 'users';// static::tableName(); /// 4:09:59
+        $attributes = array_keys($where);
+        $sql = implode(" AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $statment = self::prepare("SELECT *FROM $tableName WHERE $sql");
+        foreach ($where as $key => $item) {
+            $statment->bindValue(":$key", $item);
+        }
+        $statment->execute();
+        return $statment->fetchObject(static::class);
+    }
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);
