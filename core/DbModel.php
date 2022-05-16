@@ -37,7 +37,7 @@ abstract class DbModel extends Model
         foreach ($where as $key => $item) {
             $statment->bindValue(":$key", $item);
         }
-        $statment->execute();
+        $statment->execute(); 
         return $statment->fetchObject(static::class);
     }
     public static function prepare($sql)

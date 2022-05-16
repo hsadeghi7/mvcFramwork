@@ -22,7 +22,6 @@ class Session
         $_SESSION[self::FLASH_KEY][$key] = [
             'remove' => false,
             'value' => $message
-
         ];
     }
 

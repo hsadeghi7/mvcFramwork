@@ -34,6 +34,9 @@ class Application
         if ($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+            echo "<pre>";
+            var_dump($this->user);
+            exit;
         } else{
             $this->user = null;
         }
